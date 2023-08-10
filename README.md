@@ -1,9 +1,9 @@
-# Contribution related to the dynamic backend plugins
+# Dynamic backend plugins showcase
 
 ## Description
 
-This folder contains contributions that allow testing, experimenting and exploring the
-experimental dynamic backend plugins feature provided by the new [backend-plugin-manager](/packages/backend-plugin-manager) package.
+This repository contains everything needed to allow testing, experimenting and exploring the
+experimental dynamic backend plugins feature provided by the new [backend-plugin-manager](https://github.com/davidfestal/backstage/tree/new-backend-plugin-manager/packages/backend-plugin-manager) package introduced in **PR [#18862](https://github.com/backstage/backstage/pull/18862)** according to Backstage **RFC [#18390](https://github.com/backstage/backstage/issues/18390)**.
 
 It contains:
 
@@ -14,18 +14,19 @@ It contains:
 
 ### Prerequisites
 
-- You should work at the root of you backstage reporitory.
+- You should at the root of your backstage reporitory.
 
-- The content of this `dynamic-backend-plugins-showcase` repository should be copied into a `dynamic-backend-plugins-showcase` folder in the root of your backstage repository, typically by running the following command in the root of your backstage repository:
+- The content of this `dynamic-backend-plugins-showcase` repository should be copied into a `dynamic-backend-plugins-showcase` folder at the root of your backstage repository, typically by running the following command in the root of your backstage repository:
 
   ```bash
-  curl  https://github.com/janus-idp/dynamic-backend-plugins-showcase/archive/refs/head/main.tar.gz | tar -xz dynamic-backend-plugins-showcase
+  mkdir -p dynamic-backend-plugins-showcase
+  curl  https://github.com/janus-idp/dynamic-backend-plugins-showcase/archive/main.tar.gz | tar -xz -C dynamic-backend-plugins-showcase --strip-components=1
   ```
 
 - Copy the dynamic-plugin-enabled backstage application packages to the backstage application:
 
   ```bash
-  cp -R dynamic-backend-plugins-showcase/apps/{app-for-dynamic,backend-for-dynamic,backend-next-for-dynamic} packages
+  cp -R dynamic-backend-plugins-showcase/apps/{app-for-dynamic,backend-next-for-dynamic} packages
   ```
 
 _NOTE: The `app-for-dynamic` package contains no change related to dynamic backend plugin support. It is provided only for the purpose of containing the same minimal list of plugins as the dynamic-plugin-enaled backend applications, in order to make testing easier_
@@ -68,27 +69,15 @@ _NOTE: The `app-for-dynamic` package contains no change related to dynamic backe
 - Start the backend application of your choice (legacy or next backend system), by running the following command in the backstage root directory:
 
   ```bash
-  yarn workspace example-backend-for-dynamic start # for the legacy backend system
-  ```
-
-  or
-
-  ```bash
-  yarn workspace example-backend-next-for-dynamic start # for the next backend system
+  yarn workspace example-backend-next-for-dynamic start
   ```
 
 ### In production mode
 
-- In your backstage root directory, run one of the following commands, according to the backend you want to test the dynamic backend plugins feature on (current legacy system, or next experimental system):
+- In your backstage root directory, run one of the following command to build the dynamic-plugins-enabled backend next application:
 
   ```bash
-  yarn workspace example-backend-for-dynamic build # for the legacy backend system
-  ```
-
-  or
-
-  ```bash
-  yarn workspace example-backend-next-for-dynamic build # for the next backend system
+  yarn workspace example-backend-next-for-dynamic build
   ```
 
   This should create a `bundle.tar.gz` file in the `dist` sub-directory of either `packages/backend-for-dynamic` or `packages/backend-next-for-dynamic`, depending on the backend you chose to build.
@@ -102,13 +91,7 @@ _NOTE: The `app-for-dynamic` package contains no change related to dynamic backe
   and
 
   ```bash
-  tar -xzf packages/backend-for-dynamic/dist/bundle.tar.gz -C dist-workspace # for the legacy backend system
-  ```
-
-  or
-
-  ```bash
-  tar -xzf packages/backend-next-for-dynamic/dist/bundle.tar.gz -C dist-workspace # for the next backend system
+  tar -xzf packages/backend-next-for-dynamic/dist/bundle.tar.gz -C dist-workspace
   ```
 
 - Change directory to the extracted directory:
@@ -144,7 +127,7 @@ _NOTE: The `app-for-dynamic` package contains no change related to dynamic backe
 - Start the backend application by running the following command in your `dist-workspace` production application root:
 
   ```bash
-  NODE_ENV=development node packages/backend*-for-dynamic --config $(pwd)/../app-config.yaml --config $(pwd)/../dynamic-backend-plugins-showcase/apps/app-config.dynamic-plugins-test.yaml
+  NODE_ENV=development node packages/backend-next-for-dynamic --config $(pwd)/../app-config.yaml --config $(pwd)/../dynamic-backend-plugins-showcase/apps/app-config.dynamic-plugins-test.yaml
   ```
 
   _NOTE: The `development` value of the `NODE_ENV` environment variable is only used here to make testing easier, by bypassing some authentication requirements enforced in real production mode._
