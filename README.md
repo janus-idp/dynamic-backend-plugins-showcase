@@ -10,6 +10,10 @@ It contains:
 - front-end and back-end applications that are enabled to support dynamic backend plugins, along with the related configuration file.
 - example dynamic plugins that can be used to test the dynamic backend plugins feature.
 
+Here is demo of the flow proposed [below](proposed-demo-path)
+
+https://github.com/janus-idp/dynamic-backend-plugins-showcase/assets/686586/a9f64c33-e77f-45eb-9716-02b2ea9fc87d
+
 ## Usage
 
 ### Prerequisites
