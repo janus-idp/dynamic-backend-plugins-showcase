@@ -14,7 +14,7 @@ It contains:
 
 ### Prerequisites
 
-- You should at the root of your backstage reporitory.
+- You should work at the root of your backstage reporitory.
 
 - The content of this `dynamic-backend-plugins-showcase` repository should be copied into a `dynamic-backend-plugins-showcase` folder at the root of your backstage repository, typically by running the following command in the root of your backstage repository:
 
@@ -221,3 +221,8 @@ Points 2 and 3 are done by the `export-dynamic` yarn scripts, which use the `exp
 The `export-dynamic-plugin` CLI command, used by the `yarn export-dynamic` scripts in the dynamic plugin examples, is part of a `@backstage/cli` fork (`@dfatwork-pkgs/backstage-cli@0.22.9-next.6`), and is used here to help packaging the dynamic plugins according to the constraints mentioned above, in order to allow straightforward testing of the dynamic plugins feature.
 
 However the `backend-plugin-manager` experimental package doesn't depend on the use of this additional CLI command, and in future steps of this backend dynamic plugin work, the use of such a dedicated command might not even be necessary.
+
+### About the support of the legacy backend system
+
+The backend dynamic plugins feature clearly targets the new backend system.
+However if it should absolutely be tested or explored on the legacy backend, a dedicated example backend application is provided in a [dedicated showcase repository](https://github.com/janus-idp/dynamic-backend-plugins-showcase-legacy-backend#readme).
