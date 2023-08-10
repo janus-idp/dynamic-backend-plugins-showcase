@@ -1,0 +1,41 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: list-explore
+  title: List Explore Tools
+  description: |
+    This template uses the **`http-request` scaffolder action** to send an http request
+    to the **explore backend plugin** and returns the list of tools as a result.
+    
+    _Note: Both the **completed explore backend** and the **`http-request` scaffolder action** used in this template are provided as dynamic plugins._
+spec:
+  type: service
+  parameters:
+    - title: Enter filtering tag
+      properties:
+        tag:
+          title: Tag
+          type: string
+          description: The tag you want to filter on
+          enum: ['dynamic plugins', 'ci', 'dev', 'performance', 'monitoring', 'errors', 'alerting', 'web', 'seo', 'accessibility', 'standards', 'landscape', 'cloud', 'finops', 'gitops']
+  steps:
+    - id: backstage_request
+      name: backstage request
+      action: http:backstage:request
+      input:
+        method: 'GET'
+        path: explore/tools?tag=${{ parameters.tag }}
+  output:
+    text:
+      - title: Code
+        content: "${{ steps.backstage_request.output.code | string }}"
+      - title: Headers
+        content: |
+          ```
+          ${{ steps.backstage_request.output.headers | dump(2) }}
+          ```
+      - title: Body
+        content:  |
+          ```
+          ${{ steps.backstage_request.output.body | dump(2) }}
+          ```

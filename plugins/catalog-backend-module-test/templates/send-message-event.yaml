@@ -1,0 +1,42 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: send-message-event
+  title: Send Message Event
+  description: |
+    This template sends a message event to the `test-dynamic-plugins` http endpoint.
+    
+    If the **Browser Event Sink tool** contributed by the `explore-backend-completed` plugin, the messages
+    will be forwarded to its front-end application.
+
+    _Note: All these features, as well as the `http-request` scaffolder action used in this template, are provided as dynamic plugins._
+
+spec:
+  type: service
+  parameters:
+    - title: Enter text to send to the Event Http endpoint
+      description: |
+        It will be received by a subscriber and both logged and sent
+        to the browser sink window.
+      properties:
+        text:
+          title: text
+          type: string
+          description: The text you want to send
+  steps:
+    - id: backstage_request
+      name: backstage request
+      action: http:backstage:request
+      input:
+        method: POST
+        path: events/http/test-dynamic-plugins
+        headers:
+          content-type: application/json
+        body: "{\"text\": \"${{ parameters.text }}\"}"
+  output:
+    text:
+      - title: Result
+        content: |
+          Look in the logs to find out messages about the received event starting with: 'Dynamic Plugins Test'.
+
+          The message should also be displayed in the **Browser Event Sink** window.

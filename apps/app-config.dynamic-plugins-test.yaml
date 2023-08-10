@@ -1,0 +1,13 @@
+catalog:
+  locations: []
+  rules:
+    - allow: ['template']
+      locations:
+        - type: 'file'
+          pattern: /**/catalog-backend-module-test/**/templates/*.yaml
+
+dynamicPlugins:
+  rootDirectory: dynamic-plugins-root
+
+app:
+  packageName: example-app-for-dynamic

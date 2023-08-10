@@ -1,0 +1,26 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: retrieve-browser-event-sink-tool
+  title: Get Browser Event Sink Tool URL
+  description: |
+    This template retrieves the URL of the **Browser Event Sink** tool.
+    
+    The **Browser Event Sink tool** is contributed by a plugin, and:
+    - exposes a dedicated front-end page at the given URL,
+    - forwards `test-dynamic-plugins` events received by backstage to the front-end through `socket.io`.
+
+    _Note: All these features, as well as the `http-request` scaffolder action used in this template, are provided as dynamic plugins._
+spec:
+  type: service
+  steps:
+    - id: backstage_request
+      name: backstage request
+      action: http:backstage:request
+      input:
+        method: 'GET'
+        path: explore/tools?tag=dynamic plugins
+  output:
+    links:
+      - title: Browser Event Sink URL
+        url: "${{ steps.backstage_request.output.body.tools[0].url }}"
