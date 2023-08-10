@@ -20,7 +20,7 @@ It contains:
 
   ```bash
   mkdir -p dynamic-backend-plugins-showcase
-  curl  https://github.com/janus-idp/dynamic-backend-plugins-showcase/archive/main.tar.gz | tar -xz -C dynamic-backend-plugins-showcase --strip-components=1
+  curl -s -L https://github.com/janus-idp/dynamic-backend-plugins-showcase/archive/main.tar.gz | tar -xz -C dynamic-backend-plugins-showcase --strip-components=1
   ```
 
 - Copy the dynamic-plugin-enabled backstage application packages to the backstage application:
