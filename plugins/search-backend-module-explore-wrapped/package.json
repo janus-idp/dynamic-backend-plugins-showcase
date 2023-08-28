@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@backstage/backend-plugin-manager": "link:../../../../packages/backend-plugin-manager",
-    "@backstage/plugin-search-backend-module-explore": "^0.1.4-next"
+    "@backstage/plugin-search-backend-module-explore": "^0.1.6-next"
   },
   "devDependencies": {
     "@backstage/cli": "npm:@dfatwork-pkgs/backstage-cli@^0.22.9-next.6"

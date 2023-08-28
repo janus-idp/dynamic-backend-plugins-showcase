@@ -8,7 +8,7 @@ import { createHttpBackstageAction } from '@roadiehq/scaffolder-backend-module-h
 
 export const dynamicPluginInstaller: BackendDynamicPluginInstaller = {
   kind: 'new',
-  install: createBackendModule(() => ({
+  install: createBackendModule({
     moduleId: 'scaffolder-backend-module-http-request',
     pluginId: 'scaffolder',
     register(env) {
@@ -22,5 +22,5 @@ export const dynamicPluginInstaller: BackendDynamicPluginInstaller = {
         },
       });
     },
-  })),
+  }),
 };

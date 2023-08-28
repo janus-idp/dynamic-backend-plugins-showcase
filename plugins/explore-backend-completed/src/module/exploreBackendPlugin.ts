@@ -5,7 +5,7 @@ import {
 import { loggerToWinstonLogger } from '@backstage/backend-common';
 import { createExploreRouter } from '../router/createExploreRouter';
 
-export const explorebackendPlugin = createBackendPlugin(() => ({
+export const explorebackendPlugin = createBackendPlugin({
   pluginId: 'explore',
   register(env) {
     env.registerInit({
@@ -19,4 +19,4 @@ export const explorebackendPlugin = createBackendPlugin(() => ({
       },
     });
   },
-}));
+});
