@@ -33,12 +33,10 @@ import { searchPlugin } from '@backstage/plugin-search-backend/alpha';
 import { techdocsPlugin } from '@backstage/plugin-techdocs-backend/alpha';
 import { eventsPlugin } from '@backstage/plugin-events-backend/alpha';
 
-const backend = createBackend({
-  services: [
-    dynamicPluginsServiceFactory(),
-    dynamicPluginsFeatureDiscoveryServiceFactory(), // overridden version of the FeatureDiscoveryService which provides features loaded by dynamic plugins
-  ],
-});
+const backend = createBackend();
+
+backend.add(dynamicPluginsFeatureDiscoveryServiceFactory()) // overridden version of the FeatureDiscoveryService which provides features loaded by dynamic plugins
+backend.add(dynamicPluginsServiceFactory())
 
 backend.add(appPlugin());
 
