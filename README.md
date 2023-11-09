@@ -1,6 +1,6 @@
 # Dynamic backend plugins showcase
 
-## Preliminary note
+## Important note
 
 This repository was initially created to showcase the ongoing work on dynamic plugin loading
 in backstage **for backend plugins only**.
