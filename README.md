@@ -6,6 +6,7 @@ This repository was initially created to showcase the ongoing work on dynamic pl
 in backstage **for backend plugins only**.
 
 Building on top of this initial work, some more progress has been made by the [Janus](https://github.com/janus-idp) community.
+
 Now the [Janus Showcase backstage distribution](https://github.com/janus-idp/backstage-showcase) provides support for dynamic plugins on **both the back-end and front-end**, with the ability to configure them
 **without any code change or rebuild of the backstage application**.
 
