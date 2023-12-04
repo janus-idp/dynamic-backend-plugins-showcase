@@ -3,7 +3,7 @@ import {
   coreServices,
   createBackendModule,
 } from '@backstage/backend-plugin-api';
-import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node';
+import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';
 import { createHttpBackstageAction } from '@roadiehq/scaffolder-backend-module-http-request';
 
 export const dynamicPluginInstaller: BackendDynamicPluginInstaller = {

@@ -1,1 +1,1 @@
-export * from './dynamic/alpha';
+export { eventsModuleWebhook as default } from './module/eventsModuleWebhook';

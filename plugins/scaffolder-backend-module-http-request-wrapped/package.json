@@ -18,7 +18,7 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "export-dynamic": "backstage-cli package export-dynamic-plugin --embed-package @roadiehq/scaffolder-backend-module-http-request"
+    "export-dynamic": "/home/dfestal/git/janus/backstage-plugins/packages/cli/bin/janus-cli package export-dynamic-plugin --embed-package @roadiehq/scaffolder-backend-module-http-request"
   },
   "dependencies": {
     "@backstage/backend-plugin-manager": "link:../../../../packages/backend-plugin-manager",
@@ -30,7 +30,7 @@
     "@backstage/plugin-scaffolder-node": "link:../../../../plugins/scaffolder-node"
   },
   "devDependencies": {
-    "@backstage/cli": "npm:@dfatwork-pkgs/backstage-cli@0.22.9-next.6"
+    "@janus-idp/cli": "^1.4.4"
   },
   "files": [
     "dist",
