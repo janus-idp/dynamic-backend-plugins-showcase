@@ -228,7 +228,7 @@ It adds a location with the templates contained in its `templates` folder, so th
 
 Due to some limitations of the current backstage codebase, and to ensure compatibility with the legacy backend system (until it is replaced by the next backend), the plugins need to be completed and repackaged to by used as dynamic plugins:
 
-1. they must provide a named entry point of a specific type (which can be found in the `src/dynamic` sub-folder of each dynamic plugin example).
+1. they must provide a named entry point of a specific type (which can be found in the `src/dynamic` sub-folder of each dynamic plugin example), at least for the legacy backend (for the new backend system, default export of the `BackendFeature` can be automatically detected and used).
 2. they would have a modified `package.json` file in which dependencies are updated to share `@backstage` dependencies with the main application.
 3. they may embed some dependency whose code is then merged with the plugin code.
 
@@ -236,7 +236,7 @@ Points 2 and 3 are done by the `export-dynamic` yarn scripts, which use the `exp
 
 ### About the `export-dynamic-plugin` command
 
-The `export-dynamic-plugin` CLI command, used by the `yarn export-dynamic` scripts in the dynamic plugin examples, is part of a `@backstage/cli` fork (`@dfatwork-pkgs/backstage-cli@0.22.9-next.6`), and is used here to help packaging the dynamic plugins according to the constraints mentioned above, in order to allow straightforward testing of the dynamic plugins feature.
+The `export-dynamic-plugin` CLI command, used by the `yarn export-dynamic` scripts in the dynamic plugin examples, is part of the Janus-IDP `@backstage/cli` fork (`@dfatwork-pkgs/janus-cli@1.5.0`), and is used here to help packaging the dynamic plugins according to the constraints mentioned above, in order to allow straightforward testing of the dynamic plugins feature.
 
 However the `backend-plugin-manager` experimental package doesn't depend on the use of this additional CLI command, and in future steps of this backend dynamic plugin work, the use of such a dedicated command might not even be necessary.
 
