@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 The Backstage Authors
+ * Copyright 2020 The Backstage Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
 import App from './App';
@@ -24,8 +25,14 @@ describe('App', () => {
       APP_CONFIG: [
         {
           data: {
-            app: { title: 'Test' },
+            app: {
+              title: 'Test',
+              support: { url: 'http://localhost:7007/support' },
+            },
             backend: { baseUrl: 'http://localhost:7007' },
+            lighthouse: {
+              baseUrl: 'http://localhost:3003',
+            },
             techdocs: {
               storageUrl: 'http://localhost:7007/api/techdocs/static/docs',
             },

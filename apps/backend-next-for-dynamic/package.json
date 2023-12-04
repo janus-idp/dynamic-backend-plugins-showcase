@@ -1,6 +1,6 @@
 {
   "name": "example-backend-next-for-dynamic",
-  "version": "0.0.13-next.1",
+  "version": "0.0.17",
   "main": "dist/index.cjs.js",
   "types": "src/index.ts",
   "license": "Apache-2.0",
@@ -18,7 +18,7 @@
     "backstage"
   ],
   "scripts": {
-    "start": "EXPERIMENTAL_BACKEND_START=1 backstage-cli package start --config  $(pwd)/../../app-config.yaml --config $(pwd)/../../dynamic-backend-plugins-showcase/apps/app-config.dynamic-plugins-test.yaml",
+    "start": "backstage-cli package start --config  $(pwd)/../../app-config.yaml --config $(pwd)/../../dynamic-backend-plugins-showcase/apps/app-config.dynamic-plugins-test.yaml",
     "build": "backstage-cli package build",
     "lint": "backstage-cli package lint",
     "test": "backstage-cli package test",
@@ -29,16 +29,20 @@
     "@backstage/backend-plugin-manager": "workspace:^",
     "@backstage/plugin-app-backend": "workspace:^",
     "@backstage/plugin-catalog-backend": "workspace:^",
+    "@backstage/plugin-catalog-backend-module-scaffolder-entity-model": "workspace:^",
     "@backstage/plugin-events-backend": "workspace:^",
+    "@backstage/plugin-events-node": "workspace:^",
     "@backstage/plugin-permission-backend": "workspace:^",
+    "@backstage/plugin-permission-backend-module-allow-all-policy": "workspace:^",
+    "@backstage/plugin-permission-common": "workspace:^",
+    "@backstage/plugin-permission-node": "workspace:^",
+    "@backstage/plugin-proxy-backend": "workspace:^",
     "@backstage/plugin-scaffolder-backend": "workspace:^",
     "@backstage/plugin-search-backend": "workspace:^",
     "@backstage/plugin-search-backend-module-catalog": "workspace:^",
-    "@backstage/plugin-search-backend-module-techdocs": "workspace:^",
     "@backstage/plugin-search-backend-node": "workspace:^",
-    "@backstage/plugin-techdocs-backend": "workspace:^",
     "example-app-for-dynamic": "link:../app-for-dynamic"
-  },
+},
   "devDependencies": {
     "@backstage/cli": "workspace:^"
   },

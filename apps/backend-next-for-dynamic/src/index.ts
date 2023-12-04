@@ -19,46 +19,25 @@ import {
   dynamicPluginsServiceFactory,
   dynamicPluginsFeatureDiscoveryServiceFactory,
 } from '@backstage/backend-plugin-manager';
-import { appPlugin } from '@backstage/plugin-app-backend/alpha';
-import { catalogPlugin } from '@backstage/plugin-catalog-backend/alpha';
-import {
-  permissionModuleAllowAllPolicy,
-  permissionPlugin,
-} from '@backstage/plugin-permission-backend/alpha';
-import { scaffolderPlugin } from '@backstage/plugin-scaffolder-backend/alpha';
-import { catalogModuleTemplateKind } from '@backstage/plugin-scaffolder-backend/alpha';
-import { searchModuleCatalogCollator } from '@backstage/plugin-search-backend-module-catalog/alpha';
-import { searchModuleTechDocsCollator } from '@backstage/plugin-search-backend-module-techdocs/alpha';
-import { searchPlugin } from '@backstage/plugin-search-backend/alpha';
-import { techdocsPlugin } from '@backstage/plugin-techdocs-backend/alpha';
-import { eventsPlugin } from '@backstage/plugin-events-backend/alpha';
 
 const backend = createBackend();
 
-backend.add(dynamicPluginsFeatureDiscoveryServiceFactory()) // overridden version of the FeatureDiscoveryService which provides features loaded by dynamic plugins
-backend.add(dynamicPluginsServiceFactory())
+backend.add(dynamicPluginsFeatureDiscoveryServiceFactory()); // overridden version of the FeatureDiscoveryService which provides features loaded by dynamic plugins
+backend.add(dynamicPluginsServiceFactory());
 
-backend.add(appPlugin());
-
-// Techdocs
-backend.add(techdocsPlugin());
-
-// Catalog
-backend.add(catalogPlugin());
-backend.add(catalogModuleTemplateKind());
-
-backend.add(scaffolderPlugin());
-
-// Search
-backend.add(searchPlugin());
-backend.add(searchModuleCatalogCollator());
-backend.add(searchModuleTechDocsCollator());
-
-// Permissions
-backend.add(permissionPlugin());
-backend.add(permissionModuleAllowAllPolicy());
-
-// Events
-backend.add(eventsPlugin());
+backend.add(import('@backstage/plugin-app-backend/alpha'));
+backend.add(
+  import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
+);
+backend.add(import('@backstage/plugin-catalog-backend/alpha'));
+backend.add(
+  import('@backstage/plugin-permission-backend-module-allow-all-policy'),
+);
+backend.add(import('@backstage/plugin-permission-backend/alpha'));
+backend.add(import('@backstage/plugin-proxy-backend/alpha'));
+backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));
+backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
+backend.add(import('@backstage/plugin-search-backend/alpha'));
+backend.add(import('@backstage/plugin-events-backend/alpha'));
 
 backend.start();
